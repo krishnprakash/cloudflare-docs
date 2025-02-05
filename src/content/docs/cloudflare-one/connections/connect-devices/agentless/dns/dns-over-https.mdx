@@ -234,9 +234,9 @@ Steps 1-3 above only need to be completed once, while Steps 4-5 below would occu
 Request a DoH token for the user, using your service token to authenticate into your <GlossaryTooltip term="team domain">team domain</GlossaryTooltip>.
 
 ```bash
-curl "https://<TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/doh-token?account-id=<ACCOUNT_ID>&user-id=<USER_ID>&auth-domain=<TEAM_NAME>.cloudflareaccess.com" \
---header "Cf-Access-Client-Id: <CLIENT_ID>" \
---header "Cf-Access-Client-Secret: <CLIENT_SECRET>"
+curl "https://$TEAM_NAME.cloudflareaccess.com/cdn-cgi/access/doh-token?account-id=$ACCOUNT_ID&user-id=$USER_ID&auth-domain=$TEAM_NAME.cloudflareaccess.com" \
+--header "Cf-Access-Client-Id: $CLOUDFLARE_CLIENT_ID" \
+--header "Cf-Access-Client-Secret: $CLOUDFLARE_CLIENT_SECRET"
 ```
 
 The response contains a unique DoH token associated with the user. This token expires in 24 hours. We recommend setting up a refresh flow for the DoH token instead of generating a new one for every DoH query.
@@ -253,12 +253,12 @@ The response contains a unique DoH token associated with the user. This token ex
 
 ### 5. Send an authenticated DoH query
 
-Send DoH queries to the resolver at `https://<ACCOUNT_ID>.cloudflare-gateway.com/dns-query`, making sure to include the user's DoH token in the `CF-Authorization` header.
+Send DoH queries to the resolver at `https://$ACCOUNT_ID.cloudflare-gateway.com/dns-query`, making sure to include the user's DoH token in the `CF-Authorization` header.
 
 ```bash
-curl --silent "https://<ACCOUNT_ID>.cloudflare-gateway.com/dns-query?name=example.com" \
+curl --silent "https://$ACCOUNT_ID.cloudflare-gateway.com/dns-query?name=example.com" \
 --header "accept: application/dns-json" \
---header "CF-Authorization: <USER_DOH_TOKEN>" | jq
+--header "CF-Authorization: $USER_DOH_TOKEN" | jq
 ```
 
 If the site is blocked and you have enabled [**Display block page**](/cloudflare-one/policies/gateway/block-page/#turn-on-the-block-page) for the policy, the query will return `162.159.36.12` (the IP address of the Gateway block page). If the block page is disabled, the response will be `0.0.0.0`.
