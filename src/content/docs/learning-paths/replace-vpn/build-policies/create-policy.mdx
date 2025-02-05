@@ -39,8 +39,7 @@ To create a new policy, open [Zero Trust](https://one.dash.cloudflare.com/) and 
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 --header "Content-Type: application/json" \
 --data '{
   "name": "Company Wiki DNS policy",
@@ -102,8 +101,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 --header "Content-Type: application/json" \
 --data '{
   "name": "Company Wiki network policy",
@@ -160,8 +158,7 @@ We recommend adding a catch-all policy to the bottom of your network policy list
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 --header "Content-Type: application/json" \
 --data '{
   "name": "Catch-all block policy",

@@ -78,8 +78,7 @@ For example, if users are issued a corporate-managed iPhone with limited permiss
 
    ```bash
    curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists \
-   --header "X-Auth-Email: <EMAIL>" \
-   --header "X-Auth-Key: <API_KEY>" \
+   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
    --header "Content-Type: application/json" \
    --data '{
      "description": "The serial numbers for administrators",
@@ -97,8 +96,7 @@ For example, if users are issued a corporate-managed iPhone with limited permiss
 
    ```bash
    curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
-   --header "X-Auth-Email: <EMAIL>" \
-   --header "X-Auth-Key: <API_KEY>" \
+   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
    --header "Content-Type: application/json" \
    --data '{
      "name": "Do not inspect corporate devices",
@@ -142,8 +140,7 @@ If you filter your network-connected devices with Magic WAN tunnels, the WARP Co
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
---header "X-Auth-Email: <EMAIL>" \
---header "X-Auth-Key: <API_KEY>" \
+--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 --header "Content-Type: application/json" \
 --data '{
   "name": "Do not inspect corporate devices",
