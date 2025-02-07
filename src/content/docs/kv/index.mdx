@@ -34,33 +34,56 @@ Workers KV is ideal for projects that require:
 
 For example, you can use Workers KV for:
 
-- Caching API responses
-- Storing user configurations / preferences
-- Storing user authentication details
+- Caching API responses.
+- Storing user configurations / preferences.
+- Storing user authentication details.
 
 <Tabs>
 <TabItem label="index.ts">
 ```ts
 export interface Env {
-	BINDING_NAME: KVNamespace;
-  }
+	YOUR_BINDING: KVNamespace;
+}
 
 export default {
-  async fetch(request, env, ctx): Promise < Response > {
-    await env.BINDING_NAME.put("KEY", "VALUE");
-    const value = await env.BINDING_NAME.get("KEY");
-    const allKeys = await env.BINDING_NAME.list();
-    await env.BINDING_NAME.delete("KEY");
-    return new Response(JSON.stringify({
-        value: value,
-        allKeys: allKeys
-      }), {
-        headers: {
-          "A":"B"
-        });
-    },
-  }
-  satisfies ExportedHandler < Env > ;
+	async fetch(request, env, ctx): Promise<Response> {
+		await env.YOUR_BINDING.put('KEY', 'VALUE');
+		const value = await env.YOUR_BINDING.get('KEY');
+		const allKeys = await env.YOUR_BINDING.list();
+		await env.YOUR_BINDING.delete('KEY');
+		return new Response(
+			JSON.stringify({
+				value: value,
+				allKeys: allKeys,
+			}),
+			{
+				headers: {
+					'Content-Type': 'application/json'
+				},
+			}
+		);
+	},
+};
+
+```
+</TabItem>
+<TabItem label="wrangler.json">
+```json
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "WORKER-NAME",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-02-04",
+	"observability": {
+		"enabled": true
+	},
+
+	"kv_namespaces": [
+		{
+			"binding": "YOUR_BINDING",
+			"id": "<YOUR_BINDING_ID>"
+		}
+	]
 ```
 </TabItem>
 </Tabs>
