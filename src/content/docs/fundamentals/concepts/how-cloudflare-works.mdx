@@ -24,9 +24,9 @@ A DNS query is like asking for directions to a place, and the DNS records are in
 
 ## Cloudflare as a DNS provider
 
-When Cloudflare receives a DNS query for your domain, the response is determined by the configuration [set in your DNS table](/dns/manage-dns-records/how-to/create-dns-records/), including the [type of the record](/dns/manage-dns-records/reference/dns-record-types/), the record's [proxy eligibility](/dns/proxy-status/limitations/#proxy-eligibility), and its [proxy status](/dns/manage-dns-records/reference/proxied-dns-records/).
+When Cloudflare receives a DNS query for your domain, the response is determined by the configuration [set in your DNS table](/dns/manage-dns-records/how-to/create-dns-records/), including the [type of the record](/dns/manage-dns-records/reference/dns-record-types/), the record's [proxy eligibility](/dns/proxy-status/limitations/#proxy-eligibility), and its [proxy status](/dns/proxy-status/#proxied-records).
 
-If your [domain's status](/dns/zone-setups/reference/domain-status/) is active and the queried DNS record is set to `proxied`, Cloudflare responds with an [anycast IP address](m/fundamentals/concepts/cloudflare-ip-addresses/), instead of the origin server defined in your DNS table. 
+If your [domain's status](/dns/zone-setups/reference/domain-status/) is active and the queried DNS record is set to `proxied`, Cloudflare responds with an [anycast IP address](/fundamentals/concepts/cloudflare-ip-addresses/), instead of the origin server defined in your DNS table. 
 
 Your domain status is active when your nameservers are updated to point to Cloudflare and have been authenticated. The proxy status defines how Cloudflare treats queries for that record. The anycast IP address is used to distribute traffic amongst Cloudflare's network, which protects your origin server from DDos attacks and can help optimize, cache, and protect requests to your application.
 
