@@ -9,7 +9,7 @@ sidebar:
       text: Beta
 ---
 
-import { Render, Description, Plan, RelatedProduct } from "~/components";
+import { Render, Description, Plan, RelatedProduct, DirectoryListing } from "~/components";
 
 <Description>
 Simplify private network management with Cloudflare DNS for your internal resources.
@@ -25,7 +25,7 @@ Internal DNS is currently in closed beta. Using it on production traffic is at y
 
 ## Architecture overview
 
-Internal DNS queries can only be resolved by using the Cloudflare Gateway, which acts as an interface between the client and the internal zone.
+Internal DNS queries can only be resolved by using Cloudflare Gateway, which acts as an interface between the client and the internal zone.
 
 ```mermaid
 flowchart LR
@@ -54,7 +54,9 @@ flowchart LR
 
 Each DNS view is a logical grouping of internal DNS zones. Internal DNS zones can either contain the DNS records that should be used to resolve an internal DNS query or reference another internal zone that contains such record.
 
-## Features
+## Resources
+
+<DirectoryListing />
 
 ## Related products
 

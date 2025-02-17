@@ -4,3 +4,45 @@ pcx_content_type: get-started
 sidebar:
   order: 2
 ---
+
+import { TabItem, Tabs } from "~/components";
+
+Follow this guide to get started with Internal DNS.
+
+:::note
+This process is currently only available via API.
+:::
+
+## Before you begin
+
+## 1. Set up your internal DNS zone
+
+1. Use the XYZ endpoint to create an internal zone.
+2. Add DNS records to your internal zone:
+- [Import](/api/resources/dns/subresources/records/methods/import/) a formatted BIND file.
+- Use other API endpoints to manage DNS records, such as [Batch record changes](/api/resources/dns/subresources/records/methods/batch/)
+3. Repeat this process for each internal zone you need to add.
+
+### (Optional) Reference a zone from another zone
+
+1. Use the XYZ endpoint to add a create a reference link from an existing zone to another zone.
+
+## 2. Link your internal zone to a view
+
+Since the resolver policy will require a view ID, a minimum of one view per account is required.
+
+1. Use the XYZ endpoint to create a view. For each view you create, list all the internal zones that should be grouped under that view.
+
+## 3. Configure Gateway policies
+
+<Tabs syncKey="dashPlusAPI"> <TabItem label="Dashboard">
+
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/login) and select your account and domain.
+2. Go to **DNS** > **Settings**.
+3. Turn on the option **CNAME flattening for all CNAME records**.
+
+</TabItem> <TabItem label="API">
+
+Make a `PATCH` request to the [Update DNS Settings](/api/resources/dns/subresources/settings/methods/edit/) endpoint and set `flatten_all_cnames` to `true` in the request body.
+
+</TabItem> </Tabs>
