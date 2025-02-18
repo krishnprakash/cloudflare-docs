@@ -62,6 +62,10 @@ SELECT * FROM orders WHERE order_date = '2023-05-01'
 
 In more complex cases, you can confirm whether an index was used by D1 by [analyzing a query](#test-an-index) directly.
 
+### Run `PRAGMA optimize`
+
+After creating an index, run the [`PRAGMA optimize`](/d1/sql-api/sql-statements/#pragma-optimize) command to improve your database performance.
+
 ## List indexes
 
 List the indexes on a database, as well as the SQL definition, by querying the `sqlite_schema` system table:
@@ -81,10 +85,6 @@ This will return output resembling the below:
 ```
 
 Note that you cannot modify this table, or an existing index. To modify an index, [delete it first](#remove-indexes) and [create a new index](#create-an-index) with the updated definition.
-
-## Run `PRAGMA optimize`
-
-After creating an index, run [`PRAGMA optimize`](/d1/sql-api/sql-statements/#pragma-optimize) to improve your database performance.
 
 ## Test an index
 
