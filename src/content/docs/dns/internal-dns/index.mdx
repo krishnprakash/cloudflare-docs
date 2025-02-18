@@ -7,6 +7,7 @@ sidebar:
   group:
     badge:
       text: Beta
+    label: Internal DNS
 head:
   - tag: title
     content: Internal DNS
@@ -26,7 +27,7 @@ Manage DNS records that should only be accessible within your private network. I
 
 ## Architecture overview
 
-Internal DNS queries can only be resolved by using Cloudflare Gateway, which acts as an interface between the client and the internal zone.
+Internal DNS queries can only be resolved by using Cloudflare Gateway, which acts as an interface between the client and Internal DNS views.
 
 ```mermaid
 flowchart LR
@@ -53,7 +54,7 @@ flowchart LR
 				C --Query--> Y
 ```
 
-Each DNS view is a logical grouping of internal DNS zones. Internal DNS zones can either contain the <GlossaryTooltip term="DNS record" link="/dns/manage-dns-records/">DNS records </ GlossaryTooltip> that should be used to resolve an internal DNS query or reference another internal zone that contains such record.
+Each DNS view is a logical grouping of internal DNS zones. Internal DNS zones can either contain the <GlossaryTooltip term="DNS record" link="/dns/manage-dns-records/">DNS records</ GlossaryTooltip> that should be used to resolve an internal DNS query or reference another internal zone that contains such record.
 
 ## Resources
 
