@@ -17,9 +17,13 @@ The Domain Name System (DNS) is like the phonebook of the Internet and tells you
 
 If DNS is the phonebook of the Internet, the IP address is like a home address, and the domain name is the human-friendly name.
 
-After you add a site to Cloudflare under a full DNS setup, Cloudflare becomes the primary authoritative DNS provider for your domain. As the authoritative DNS provider, Cloudflare responds to DNS queries for your domain, and you manage your domain's DNS records via the Cloudflare dashboard or API.
+When you onboard your website or application to Cloudflare, Cloudflare becomes the primary authoritative DNS provider for your domain. This means Cloudflare responds to DNS queries for your domain, and you manage your domain's DNS records via the Cloudflare dashboard or API.
 
 A DNS query is like asking for directions to a place, and the DNS records are the source-of-truth for what exists where. DNS records live in authoritative [DNS servers](https://www.cloudflare.com/learning/dns/dns-server-types/) and provide information about a domain, such as the [IP addresses](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) of the servers that host the web content and services on that domain. With this information, Internet browsers know where to find a website or app, so they can render it for visitors using [HTTP](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/).
+
+:::note
+Cloudflare only becomes the primary authoritative DNS provider when you use the default, full DNS setup. For alternative options, refer to [DNS setups](/dns/zone-setups/).
+:::
 
 
 ## Cloudflare as a DNS provider
