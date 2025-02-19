@@ -17,16 +17,15 @@ The Domain Name System (DNS) acts as the Internet's phonebook, translating domai
 
 The IP address is like a home address of where a website lives, and the domain name is the human-readable name.
 
-When you onboard your website or application to Cloudflare, Cloudflare becomes the primary authoritative DNS provider for your domain. This means Cloudflare responds to DNS queries for your domain, and you manage your domain's DNS records via the Cloudflare dashboard or API.
-
 A DNS query is like asking for directions to a place, and the DNS records are the source-of-truth for what exists where. DNS records live in authoritative [DNS servers](https://www.cloudflare.com/learning/dns/dns-server-types/) and provide information about a domain, such as the [IP addresses](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) of the servers that host the web content and services on that domain. With this information, Internet browsers know where to find a website or app, so they can render it for visitors using [HTTP](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/).
+
+## Cloudflare as a DNS provider
+
+When you onboard your website or application to Cloudflare, Cloudflare becomes the primary authoritative DNS provider for your domain. This means Cloudflare responds to DNS queries for your domain, and you manage your domain's DNS records via the Cloudflare dashboard or API.
 
 :::note
 Cloudflare only becomes the primary authoritative DNS provider when you use the default, full DNS setup. For alternative options, refer to [DNS setups](/dns/zone-setups/).
 :::
-
-
-## Cloudflare as a DNS provider
 
 When Cloudflare receives a DNS query for your domain, the response is determined by the configuration [set in your DNS table](/dns/manage-dns-records/how-to/create-dns-records/), including the [type of the record](/dns/manage-dns-records/reference/dns-record-types/), the record's [proxy eligibility](/dns/proxy-status/limitations/#proxy-eligibility), and its [proxy status](/dns/proxy-status/#proxied-records).
 
