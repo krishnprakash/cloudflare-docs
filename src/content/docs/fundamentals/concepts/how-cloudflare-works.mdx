@@ -13,9 +13,9 @@ To optimize your website or web application, Cloudflare acts as a [CDN](https://
 
 ## DNS explained
 
-The Domain Name System (DNS) is like the phonebook of the Internet and tells your browser where a website's content lives. Each domain name–such as cloudflare.com–is mapped to an Internet Protocol (IP) address; the IP address is a numerical label assigned to a website that looks like `103.21.244.0`, for example.
+The Domain Name System (DNS) acts as the Internet's phonebook, translating domain names (for example, `cloudflare.com`) into numerical Internet Protocol (IP) addresses (for example, `103.21.244.0`).
 
-If DNS is the phonebook of the Internet, the IP address is like a home address, and the domain name is the human-friendly name.
+The IP address is like a home address of where a website lives, and the domain name is the human-readable name.
 
 When you onboard your website or application to Cloudflare, Cloudflare becomes the primary authoritative DNS provider for your domain. This means Cloudflare responds to DNS queries for your domain, and you manage your domain's DNS records via the Cloudflare dashboard or API.
 
@@ -32,7 +32,7 @@ When Cloudflare receives a DNS query for your domain, the response is determined
 
 If your [domain's status](/dns/zone-setups/reference/domain-status/) is active and the queried DNS record is set to `proxied`, Cloudflare responds with an [anycast IP address](/fundamentals/concepts/cloudflare-ip-addresses/), instead of the actual IP address of the origin server as defined in your DNS table. 
 
-Your domain status is active when your nameservers are updated to point to Cloudflare and have been authenticated. The proxy status defines how Cloudflare treats queries for specific DNS records. The anycast IP address is used to distribute traffic amongst Cloudflare's network, which protects your website or app from [DDoS](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and other attacks, while optimizing site speed.
+Your domain status is active when your [nameservers are updated](/dns/nameservers/update-nameservers/) to point to Cloudflare and have been authenticated. The [proxy status](/dns/proxy-status/) defines how Cloudflare treats queries for specific DNS records. The [anycast IP address](/fundamentals/concepts/cloudflare-ip-addresses/) is used to distribute traffic amongst Cloudflare's network, which protects your website or app from [DDoS](/learning/ddos/what-is-a-ddos-attack/) and other attacks, while optimizing site speed.
 
 ## Cloudflare as a reverse proxy
 
