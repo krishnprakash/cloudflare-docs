@@ -27,31 +27,23 @@ WARP settings define the WARP client modes and permissions available to end user
 
 :::note
 
-To enable **Admin override**, you must have first enabled the [**Lock WARP switch**](#lock-warp-switch).
+To use **Admin override**, you must first have enabled the [**Lock WARP switch**](#lock-warp-switch).
 
 :::
 
-When **Admin override** is turned on, end users can turn off the WARP client using an override code provided by an admin.
-
-To enable **Admin override**:
-
-1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **Settings** > **WARP Client**.
-2. Toggle **Admin override** on.
-3. (Optional) Set the **Timeout** to your desired time. **Timeout** is set to 1 hour by default.
+When the [**Lock WARP switch**](#lock-warp-switch) is enabled, users cannot turn the WARP client off on their device. Enabling **Admin override** gives users the ability to turn off the WARP client using an override code provided by an admin.
 
 **Admin override** allows end users to momentarily turn off WARP with an override code to work around a temporary network issue (for example, an incompatible public Wi-Fi, or a firewall at a customer site blocking the connection).
 
-As admin, you can set a **Timeout** to define how long a user can toggle on or off the WARP switch after entering the override code. Cloudflare generates a new override code every hour that the admin can access and send to end users. The override code's validity adheres to fixed-hour time blocks and aims to be generous to the end user. For example, if admin generates a code with a **Timeout** of one hour at 9:00 AM and the end user inputs the override code in their device at 9:59AM, the user will be able to toggle WARP on and off until 10:59AM (a one hour duration.)
+As admin, you can set a **Timeout** to define how long a user can toggle the WARP switch on or off after entering the override code. Cloudflare generates a new override code every hour that an admin can send to end users. The override code's validity adheres to fixed-hour time blocks and aims to be generous to the end user.
 
-However, if admin generates an override code at 9:00 AM that has a one hour Timeout and the user attempts to enter it at 10:00 AM, the override code will not work.
+:::caution[Troubleshooting]
 
-If an admin generated an override code at 9:00 AM and set a **Timeout** to three hours, a user who enters the override code at 9:59 AM would be able to toggle WARP off for three hours (until 12:59 PM). A user who enters the same override code at 10AM would only be able to toggle WARP off for two hours (until 12 PM) because the 9:00 AM hour block would be counted as used.
+To learn more about override code timeouts and how Cloudflare calculates an override code's valid duration, refer to [Troubleshooting](/cloudflare-one/faq/troubleshooting/#i-entered-an-override-code-for-warp-that-was-supposed-to-be-valid-for-3-hours-but-the-override-code-expired-faster-than-i-expected).
 
-To learn more about override code timeouts and how Cloudflare calculates an override code's validity, refer to Troubleshooting.
+If [**Auto connect**](#auto-connect) is enabled, WARP will turn on even when using a **Admin override**. Refer to [Troubleshooting](/cloudflare-one/faq/troubleshooting/#i-disabled-warp-using-an-override-code-but-warp-turned-on-by-itself-before-my-override-code-expired) for more details.
 
 :::
-
-Be aware that if [**Auto connect**](#auto-connect) is enabled, WARP will turn on according to the value set by **Auto connect** even when an override code has been entered by the user. To prevent WARP from auto connecting, temporarily disable **Auto connect** or temporarily set a longer **Timeout** for **Auto connect**.
 
 #### Retrieve the override code
 
@@ -180,13 +172,6 @@ For more details on WireGuard versus MASQUE, refer to our [blog post](https://bl
 </Details>
 
 Allows the user to turn off the WARP switch and disconnect the client.
-
-To enable the Lock WARP switch:
-
-1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **Settings** > **WARP Client**.
-2. Find the profile you would like to enable the Lock WARP switch for and select the three dot icon next to the profile.
-3. Select **Configure**.
-4. Under **Configure settings**, toggle the **Lock WARP switch** on.
 
 **Value:**
 
