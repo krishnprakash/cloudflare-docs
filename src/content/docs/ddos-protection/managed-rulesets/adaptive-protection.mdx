@@ -19,8 +19,6 @@ Adaptive DDoS Protection provides the following types of protection:
 
 Cloudflare Adaptive DDoS Protection is available to Enterprise customers according to the following table:
 
-
-
 | Feature                           | Profiling dimension                        | WAF/CDN<sup>1</sup> | Magic Transit /<br/>Spectrum BYOIP<sup>2</sup> |
 | --------------------------------- | ------------------------------------------ | :-----------------: | :--------------------------------------------: |
 | **HTTP Adaptive DDoS Protection** |                                            |                     |                                                |
@@ -30,8 +28,6 @@ Cloudflare Adaptive DDoS Protection is available to Enterprise customers accordi
 | **L3/4 Adaptive DDoS Protection** |                                            |                     |                                                |
 | For Protocols                     | IP protocol                                |          —          |                       Yes                      |
 | For Protocols                     | Client IP country and Region for UDP       |          —          |                       Yes                      |
-
-
 
 <sup>1</sup> _WAF/CDN customers on the Enterprise plan with the Advanced DDoS Protection subscription._<br/>
 <sup>2</sup> _Magic Transit and Spectrum BYOIP customers on an Enterprise plan._
@@ -69,9 +65,18 @@ To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
 1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/) and select your account.
 2. Go to Account Home > **Analytics & Logs** > **Network Analytics**.
-3. Filter by `Ruleset ID equals 3b64149bfa6e4220bbbc2bd6db589552` (the ID of the Network-layer DDoS Attack Protection managed ruleset) and by rule ID.
+3. Filter by rule ID.
 
 You may also obtain information about flagged traffic through [Logpush](/logs/about/) or the [GraphQL API](/analytics/graphql-api/).
+
+To determine if it is safe to enable an adaptive rule in mitigation:
+
+- If no packets match the rule (in the last 7 days or 24 hours), you should consider changing the rule from `log` to `block`.
+- If packets do match the rule, verify that the traffic matches and decide if it is valid. 
+
+:::note
+The default rule action for `log` with a sensitivity set to `high` will only show packets with suspected attack traffic over certain thresholds in your logs.
+:::
 
 ## Configure the rules
 
