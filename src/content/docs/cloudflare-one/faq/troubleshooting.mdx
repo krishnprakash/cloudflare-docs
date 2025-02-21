@@ -286,9 +286,9 @@ However, if the user attempts to enter the override code at **10:00 AM**, the ov
 
 ### Scenariot three: Admin generates an override code at 12:30 PM with a timeout of 24 hours.
 
-If admin generates an override code with a timeout of 24 hours at **12:00 PM** and the user inputs the override code in their device at **12:59 PM** the same day, the user will be able to toggle WARP on and off until **12:59 PM** the next day (a 24 hour duration.)
+If admin generates an override code with a timeout of 24 hours at **12:30 PM** and the user inputs the override code in their device at **12:59 PM** the same day, the user will be able to toggle WARP on and off until **12:59 PM** the next day (a 24 hour duration.)
 
-However, if the user attempts to enter the override code at **1:00 PM** the same day, the override code will only be valid until **11:00 AM** the next day (a 23 hour duration). The override code was generated at **12:00 PM** and one hour of its total 24 hour validity was counted as used in the 12:00 PM to 1:00 PM hour.
+However, if the user attempts to enter the override code at **1:00 PM** the same day, the override code will only be valid until **11:00 AM** the next day (a 23 hour duration). The override code was generated at **12:30 PM** and one hour of its total 24 hour validity was counted as used in the 12:00 PM to 1:00 PM hour.
 
 If the user attempts to enter the override code at **11:59 AM** the next day, the override code will only be valid until **12:59 PM** (a one hour duration). The override code was generated at **12:00 PM** and 23 hours of its total 24 hour validity were counted as used from 12:00 PM to 11:00 AM the next day (a 23 hour duration).
 
