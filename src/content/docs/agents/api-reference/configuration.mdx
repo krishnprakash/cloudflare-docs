@@ -42,8 +42,11 @@ Below is a minimal `wrangler.jsonc` file that defines the configuration for an A
 	"durable_objects": {
 		"bindings": [
 			{
+				// Required:
 				"name": "MyAgent", // How your Agent is called from your Worker
 				"class_name": "MyAgent", // Must match the class name of the Agent in your code
+				// Optional: set this if the Agent is defined in another Worker script
+				"script_name": "the-other-worker"
 			},
 		],
 	},

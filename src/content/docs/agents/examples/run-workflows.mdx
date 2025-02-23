@@ -9,3 +9,81 @@ sidebar:
 import { MetaInfo, Render, Type, TypeScriptExample, WranglerConfig } from "~/components";
 
 TODO - show how to invoke a Workflow from an Agent
+
+Agents can trigger asynchronous [Workflows](/workflows/), allowing your Agent to run complex, multi-step tasks in the background. This can include post-processing files that a user has uploaded, updating the embeddings in a [vector database](/vectorize/), and/or managing long-running user-lifecycle email or SMS notification workflows.
+
+Because an Agent is just like a Worker script, it can create Workflows defined in the same project (script) as the Agent _or_ in a different project.
+
+## Trigger a Workflow
+
+<TypeScriptExample>
+
+```ts
+interface Env {
+	BROWSER: Fetcher;
+}
+
+export class MyAgent extends Agent<Env> {
+
+}
+```
+
+</TypeScriptExample>
+
+<WranglerConfig>
+
+```jsonc
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "agents-example",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-02-23",
+	"compatibility_flags": ["nodejs_compat"],
+	// Create a binding between your Agent and your Workflow
+	"workflows": [{ "name": "EMAIL_WORKFLOW", "class_name": "EmailWorkflow" }],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MyAgent",
+				"class_name": "MyAgent",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			// Mandatory for the Agent to store state
+			"new_sqlite_classes": ["MyAgent"],
+		},
+	],
+	"observability": {
+		"enabled": true,
+	},
+}
+```
+
+</WranglerConfig>
+
+## Trigger a Workflow from another project
+
+You can also call a Workflow that is defined in a different Workers script from your Agent by setting the `script_name` property in the `workflows` binding of your Agent:
+
+<WranglerConfig>
+
+```jsonc
+{
+	// ...
+	"workflows": [
+		{ "name": "EMAIL_WORKFLOW",
+			"class_name": "EmailWorkflow",
+			// Set script_name to the name of the Worker that contains the EmailWorkflow definition
+			"script_name": "email-workflow-prod"
+		},
+	],
+	// ...
+}
+```
+
+</WranglerConfig>
+
+Refer to the [cross-script calls](/workflows/build/workers-api/#cross-script-calls) section of the Workflows documentation for more examples.

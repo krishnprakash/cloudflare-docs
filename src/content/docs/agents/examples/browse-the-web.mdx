@@ -21,7 +21,9 @@ interface Env {
 }
 
 export class MyAgent extends Agent<Env> {
-
+	constructor(env: Env) {
+		super(env);
+	}
 }
 ```
 
@@ -35,7 +37,7 @@ npm install @cloudflare/puppeteer --save-dev
 
 <WranglerConfig>
 
-```jsonc title=
+```jsonc
 "browser": {
     "binding": "MYBROWSER"
   },
@@ -73,7 +75,9 @@ interface Env {
 }
 
 export class MyAgent extends Agent<Env> {
-
+	constructor(env: Env) {
+		super(env);
+	}
 }
 ```
 
