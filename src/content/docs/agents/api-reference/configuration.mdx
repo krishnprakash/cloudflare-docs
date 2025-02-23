@@ -42,15 +42,16 @@ Below is a minimal `wrangler.jsonc` file that defines the configuration for an A
 	"durable_objects": {
 		"bindings": [
 			{
-				"name": "MyAgent",
-				"class_name": "MyAgent",
+				"name": "MyAgent", // How your Agent is called from your Worker
+				"class_name": "MyAgent", // Must match the class name of the Agent in your code
 			},
 		],
 	},
 	"migrations": [
 		{
 			"tag": "v1",
-			"new_sqlite_classes": ["MyAgent"], // Mandatory
+			// Mandatory for the Agent to store state
+			"new_sqlite_classes": ["MyAgent"],
 		},
 	],
 	"observability": {
@@ -65,4 +66,4 @@ The configuration includes:
 
 - A `main` field that points to the entry point of your Agent, which is typically a TypeScript (or JavaScript) file.
 - A `durable_objects` field that defines the [Durable Object namespace](/durable-objects/reference/glossary/) that your Agents will run within.
-- A `migrations` field that defines the code migrations that your Agent will use. This field is mandatory and must contain at least one migration.
+- A `migrations` field that defines the code migrations that your Agent will use. This field is mandatory and must contain at least one migration. The `new_sqlite_classes` field is mandatory for the Agent to store state.

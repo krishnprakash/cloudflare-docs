@@ -16,8 +16,13 @@ The [Browser Rendering](/browser-rendering/) allows you to spin up headless brow
 <TypeScriptExample>
 
 ```ts
+interface Env {
+	BROWSER: Fetcher;
+}
 
+export class MyAgent extends Agent<Env> {
 
+}
 ```
 
 </TypeScriptExample>
