@@ -7,11 +7,11 @@ sidebar:
 
 ---
 
-import { Render, PackageManagers, WranglerConfig } from "~/components"
+import { Render, PackageManagers, TypeScriptExample, WranglerConfig } from "~/components"
 
 :::note
 
-This quick-start guide will get you deploying your first Agent on Cloudflare in less than 5 minutes.
+**This quick-start guide will get you deploying your first Agent on Cloudflare in less than 5 minutes.**
 
 If you're new to Cloudflare Workers, Agents, or Cloudflare in general, we recommend following the more comprehensive [Agents tutorial](/agents/get-started/tutorial/), which takes you through the process step-by-step.
 
@@ -25,7 +25,12 @@ TODO: quick start
 4. Add some functionality (example)
 5. Deploy it.
 
-## 1. Create your first Agent
+## Prerequisites
+
+<Render file="prereqs" product="workers" />
+
+## 1. Create an Agents project
+
 
 <PackageManagers
 	type="create"
@@ -41,4 +46,48 @@ TODO:
 - re-deploy
 - go explore :-)
 
-## 2. 
+## 2. Review the code
+
+Open up `src/index.ts` in your favorite text editor:
+
+<TypeScriptExample filename="src/index.ts">
+
+```ts
+import { Agent } from "@cloudflare/agents";
+
+export class MyAgent extends Agent {
+  async onRequest(request) {
+  	// Code that your Agent runs on a request
+  },
+
+
+  async schedule(when, callback, payload) {
+  	// Code that your Agent runs on a schedule
+  },
+
+
+
+
+}
+```
+
+</TypeScriptExample>
+
+## 3. Deploy your Agent
+
+Agents are deployed just like any other Workers application:
+
+```sh
+npx wrangler@latest deploy
+```
+```sh output
+TODO
+```
+
+## 4. Run your Agent
+
+TODO
+
+## 5. Build out your Agent
+
+TODO
