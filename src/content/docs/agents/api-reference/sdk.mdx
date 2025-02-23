@@ -1,31 +1,11 @@
 ---
-title: Configuration
+title: Agents SDK
 pcx_content_type: concept
 sidebar:
-  order: 3
+  order: 2
 
 ---
 
 import { MetaInfo, Render, Type, WranglerConfig } from "~/components";
 
-TODO - how to configure an Agent
-
-<WranglerConfig>
-
-```json
-{
-  "name": "my-agent",
-  "script": "src/index.ts",
-  // @cloudflare/agents uses Durable Objects
-  "durable_objects": {
-    "bindings": [
-      {
-        "binding": "MyAgent",
-        "class_name": "MyAgent"
-      }
-    ]
-  }
-}
-```
-
-</WranglerConfig>
+Each Agent is a JavaScript class that extends the `Agent` class from the `@cloudflare/workers-agents` package. Agents are designed to run in a separate thread from the main Worker, allowing them to perform long-running tasks without blocking the main thread.

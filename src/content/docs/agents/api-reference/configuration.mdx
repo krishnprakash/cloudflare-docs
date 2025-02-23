@@ -1,28 +1,69 @@
 ---
-title: Agents SDK
+title:
 pcx_content_type: concept
 sidebar:
-  order: 2
+  order: 3
 
 ---
 
 import { MetaInfo, Render, Type, WranglerConfig } from "~/components";
 
-This guide details the Agents API within Cloudflare Workers, including methods, types, and usage examples.
+An Agent is configured like any other Cloudflare Workers project, and uses [a wrangler configuration](/workers/wrangler/configuration/) file to define where your code is and what services (bindings) it will use.
 
-## Agent
+The typical file structure for an Agent project created from `npm create cloudflare@latest -- --template cloudflare/agents` follows:
 
-TODO
-
-The `Agent` class is the core element of a Agent definition:
-
-```ts
-import { Agent } from "@cloudflare/agents";
-
-export class MyAgent extends Agent<Env> {
-	// methods here
-	async onRequest(req: Request) {
-		
-	}
-};
+```sh
+.
+|-- package-lock.json
+|-- package.json
+|-- public
+|   `-- index.html
+|-- src
+|   `-- index.ts // your Agent definition
+|-- test
+|   |-- index.spec.ts // your tests
+|   `-- tsconfig.json
+|-- tsconfig.json
+|-- vitest.config.mts
+|-- worker-configuration.d.ts
+`-- wrangler.jsonc // your Workers & Agent configuration
 ```
+
+Below is a minimal `wrangler.jsonc` file that defines the configuration for an Agent, including the entry point,  `durable_object` namespace, and code `migrations`:
+
+<WranglerConfig>
+
+```jsonc
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "agents-example",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-02-23",
+	"compatibility_flags": ["nodejs_compat"],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MyAgent",
+				"class_name": "MyAgent",
+			},
+		],
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["MyAgent"], // Mandatory
+		},
+	],
+	"observability": {
+		"enabled": true,
+	},
+}
+```
+
+</WranglerConfig>
+
+The configuration includes:
+
+- A `main` field that points to the entry point of your Agent, which is typically a TypeScript (or JavaScript) file.
+- A `durable_objects` field that defines the [Durable Object namespace](/durable-objects/reference/glossary/) that your Agents will run within.
+- A `migrations` field that defines the code migrations that your Agent will use. This field is mandatory and must contain at least one migration.

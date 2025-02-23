@@ -3,28 +3,29 @@ title: Schedule tasks
 pcx_content_type: concept
 sidebar:
   order: 5
-
 ---
 
 import { MetaInfo, Render, Type, TypeScriptExample, WranglerConfig } from "~/components";
 
-An Agent can schedule tasks to be run in the future by calling `this.schedule(when, callback, data)`, where `when` can be a delay, a `Date`, or a cron string; callback the function name to call, and data is an object of data to pass to the function.
+An Agent can schedule tasks to be run in the future by calling `this.schedule(when, callback, data)`, where `when` can be a delay, a `Date`, or a cron string; `callback` the function name to call, and `data` is an object of data to pass to the function.
+
+Scheduled tasks can do anything a request or message from a user can: make requests, query databases, send emails, read+write state, etc.
 
 ### Scheduling tasks
 
-You can call `this.schedule` within any method on an Agent:
+You can call `this.schedule` within any method on an Agent, and schedule tens-of-thousands of tasks per individual Agent.
 
 <TypeScriptExample>
 
 ```ts
 // schedule a task to run in 10 seconds
-this.schedule(10, "myTask", { message: "hello" });
+let task = await this.schedule(10, "myTask", { message: "hello" });
 
 // schedule a task to run at a specific date
-this.schedule(new Date("2025-01-01"), "myTask", { message: "hello" });
+let task = await this.schedule(new Date("2025-01-01"), "myTask", { message: "hello" });
 
 // schedule a task to run every 10 seconds
-this.schedule("*/10 * * * *", "myTask", { message: "hello" });
+let { id } = await this.schedule("*/10 * * * *", "myTask", { message: "hello" });
 
 // schedule a task to run every 10 seconds, but only on Mondays
 let task = await this.schedule("0 0 * * 1", "myTask", { message: "hello" });
@@ -35,6 +36,13 @@ this.cancelSchedule(task.id);
 
 </TypeScriptExample>
 
+Calling `await this.schedule` returns a `Schedule`, which includes the task's randomly generated `id`. You can use this `id` to retrieve or cancel the task in the future.
+
+:::note[Maximum scheduled tasks]
+
+Each task is mapped to a row in the Agent's underlying [SQLite database](/sqlite-in-durable-objects/), which means that each task can be up to 2MB in size. The maximum number of tasks must be `(task_size * tasks) + all_other_state < maximum_database_size` (currently 1GB per Agent).
+
+:::
 
 ### Managing scheduled tasks
 
@@ -44,17 +52,20 @@ You can get, cancel and filter across scheduled tasks within an Agent using the 
 
 ```ts
 // Get a specific schedule by ID
+// Returns undefined if the task does not exist
 let task = await this.getSchedule(task.id)
 
 // Get all scheduled tasks
-let tasks = await this.getScheduledTasks();
+// Returns an array of Schedule objects
+let tasks = this.getSchedules();
 
 // Cancel a task by its ID
+// Returns true if the task was cancelled, false if it did not exist
 await this.cancelSchedule(task.id);
 
 // Filter for specific tasks
 // e.g. all tasks starting in the next hour
-let tasks = this.getSchedules({ // returns an iterator
+let tasks = this.getSchedules({
 	timeRange: {
 		start: new Date(Date.now()),
 		end: new Date(Date.now() + 60 * 60 * 1000),
