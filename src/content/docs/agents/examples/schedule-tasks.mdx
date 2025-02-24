@@ -9,26 +9,48 @@ import { MetaInfo, Render, Type, TypeScriptExample, WranglerConfig } from "~/com
 
 An Agent can schedule tasks to be run in the future by calling `this.schedule(when, callback, data)`, where `when` can be a delay, a `Date`, or a cron string; `callback` the function name to call, and `data` is an object of data to pass to the function.
 
-Scheduled tasks can do anything a request or message from a user can: make requests, query databases, send emails, read+write state, etc.
+Scheduled tasks can do anything a request or message from a user can: make requests, query databases, send emails, read+write state: scheduled tasks can invoke any regular method on your Agent.
 
 ### Scheduling tasks
 
-You can call `this.schedule` within any method on an Agent, and schedule tens-of-thousands of tasks per individual Agent.
+You can call `this.schedule` within any method on an Agent, and schedule tens-of-thousands of tasks per individual Agent:
+
+```ts
+import { Agent } from "@cloudflare/agents"
+
+export class SchedulingAgent extends Agent {
+	async onRequest(request) {
+		// Handle an incoming request
+		// Schedule a task 5 minutes from now
+		// Calls the "checkFlights" method
+		let { taskId } = await this.schedule(600, "checkFlights", { flight: "DL264", date: "2025-02-23" });
+		return Response.json({ taskId });
+	}
+
+	async checkFlights(data) {
+		// Invoked when our scheduled task runs
+		// We can also call this.schedule here to schedule another task
+	}
+}
+```
+</TypeScriptExample>
+
+You can schedule tasks in multiple ways:
 
 <TypeScriptExample>
 
 ```ts
 // schedule a task to run in 10 seconds
-let task = await this.schedule(10, "myTask", { message: "hello" });
+let task = await this.schedule(10, "someTask", { message: "hello" });
 
 // schedule a task to run at a specific date
-let task = await this.schedule(new Date("2025-01-01"), "myTask", { message: "hello" });
+let task = await this.schedule(new Date("2025-01-01"), "someTask", {});
 
 // schedule a task to run every 10 seconds
-let { id } = await this.schedule("*/10 * * * *", "myTask", { message: "hello" });
+let { id } = await this.schedule("*/10 * * * *", "someTask", { message: "hello" });
 
 // schedule a task to run every 10 seconds, but only on Mondays
-let task = await this.schedule("0 0 * * 1", "myTask", { message: "hello" });
+let task = await this.schedule("0 0 * * 1", "someTask", { message: "hello" });
 
 // cancel a scheduled task
 this.cancelSchedule(task.id);
