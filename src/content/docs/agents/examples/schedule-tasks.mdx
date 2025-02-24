@@ -15,6 +15,8 @@ Scheduled tasks can do anything a request or message from a user can: make reque
 
 You can call `this.schedule` within any method on an Agent, and schedule tens-of-thousands of tasks per individual Agent:
 
+<TypeScriptExample>
+
 ```ts
 import { Agent } from "@cloudflare/agents"
 
@@ -59,6 +61,8 @@ this.cancelSchedule(task.id);
 </TypeScriptExample>
 
 Calling `await this.schedule` returns a `Schedule`, which includes the task's randomly generated `id`. You can use this `id` to retrieve or cancel the task in the future.
+
+Tasks that set a callback for a method that does not exist will fail silently.
 
 :::note[Maximum scheduled tasks]
 

@@ -8,4 +8,27 @@ sidebar:
 
 import { MetaInfo, Render, Type, WranglerConfig } from "~/components";
 
-Each Agent is a JavaScript class that extends the `Agent` class from the `@cloudflare/workers-agents` package. Agents are designed to run in a separate thread from the main Worker, allowing them to perform long-running tasks without blocking the main thread.
+At its most basic, an Agent is a JavaScript class that extends the `Agent` class from the `@cloudflare/agents` package. An Agent encapsulates all of the logic for an Agent, including how clients can connect to it, how it stores state, the methods it exposes, and any error handling.
+
+<TypeScriptExample>
+
+```ts
+import { Agent } from "@cloudflare/agents";
+
+class MyAgent extends Agent {
+	// Define methods on the Agent
+}
+
+export default MyAgent;
+```
+
+</TypeScriptExample>
+
+An Agent can have many (millions of) instances: each instance is a separate micro-server that runs independently of the others. This allows Agents to scale horizontally: an Agent can be associated with a single user, or many thousands of users, depending on the agent you're building.
+
+Instances of an Agent are addressed by a unique identifier: that identifier (ID) can be the user ID, an email address, GitHub username, a flight ticket number, an invoice ID, or any other identifier that helps to uniquely identify the instance and for whom it is acting on behalf of.
+
+## Agent
+
+TODO - agent class
+
