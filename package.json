@@ -36,7 +36,7 @@
 		"@astrojs/starlight-tailwind": "3.0.0",
 		"@astrojs/tailwind": "5.1.5",
 		"@cloudflare/vitest-pool-workers": "0.7.2",
-		"@cloudflare/workers-types": "4.20250204.0",
+		"@cloudflare/workers-types": "4.20250224.0",
 		"@codingheads/sticky-header": "1.0.2",
 		"@expressive-code/plugin-collapsible-sections": "0.40.2",
 		"@iarna/toml": "2.2.5",
