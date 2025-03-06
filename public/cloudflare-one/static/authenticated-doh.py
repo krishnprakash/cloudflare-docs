@@ -8,6 +8,15 @@ from pprint import pprint
 
 verbose = os.environ.get('VERBOSE', False)
 
+def sanitize_command(command):
+    sanitized_command = []
+    for part in command:
+        if part.startswith('Cf-Access-Client-Secret:'):
+            sanitized_command.append('Cf-Access-Client-Secret: [REDACTED]')
+        else:
+            sanitized_command.append(part)
+    return sanitized_command
+
 
 def check_for_command(command):
     try:
@@ -69,7 +78,8 @@ def request_doh_token(account_tag, user_id, client_id, client_secret):
                '-H', f"Cf-Access-Client-Id: {client_id}",
                '-H', f"Cf-Access-Client-Secret: {client_secret}"]
     if verbose:
-        print(f"Issuing request {' '.join(command)}")
+        sanitized_command = sanitize_command(command)
+        print(f"Issuing request {' '.join(sanitized_command)}")
     response = json.loads(subprocess.check_output(command))
     if verbose:
         print("Got response:")
@@ -145,8 +155,7 @@ client_secret = ""
 if client_id == "new":
     service_token_name = input('Please input name for service token > ')
     client_id, client_secret = request_create_service_token(service_token_name)
-    print(
-        f"Created service token with client_id {client_id} and client_secret {client_secret}. You may want to save these secrets.")
+    print("Created service token. Please save the client_id and client_secret securely.")
 
 
 if len(client_secret) == 0:
