@@ -8,6 +8,15 @@ from pprint import pprint
 
 verbose = os.environ.get('VERBOSE', False)
 
+def sanitize_command(command):
+    sanitized_command = []
+    for part in command:
+        if part.startswith('Cf-Access-Client-Secret:'):
+            sanitized_command.append('Cf-Access-Client-Secret: [REDACTED]')
+        else:
+            sanitized_command.append(part)
+    return sanitized_command
+
 
 def check_for_command(command):
     try:
@@ -69,7 +78,8 @@ def request_doh_token(account_tag, user_id, client_id, client_secret):
                '-H', f"Cf-Access-Client-Id: {client_id}",
                '-H', f"Cf-Access-Client-Secret: {client_secret}"]
     if verbose:
-        print(f"Issuing request {' '.join(command)}")
+        sanitized_command = sanitize_command(command)
+        print(f"Issuing request {' '.join(sanitized_command)}")
     response = json.loads(subprocess.check_output(command))
     if verbose:
         print("Got response:")
