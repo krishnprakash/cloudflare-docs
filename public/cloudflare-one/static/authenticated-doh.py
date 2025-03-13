@@ -69,7 +69,8 @@ def request_doh_token(account_tag, user_id, client_id, client_secret):
                '-H', f"Cf-Access-Client-Id: {client_id}",
                '-H', f"Cf-Access-Client-Secret: {client_secret}"]
     if verbose:
-        print(f"Issuing request {' '.join(command)}")
+        sanitized_command = [arg if "Cf-Access-Client-Secret" not in arg else "Cf-Access-Client-Secret: [REDACTED]" for arg in command]
+        print(f"Issuing request {' '.join(sanitized_command)}")
     response = json.loads(subprocess.check_output(command))
     if verbose:
         print("Got response:")
