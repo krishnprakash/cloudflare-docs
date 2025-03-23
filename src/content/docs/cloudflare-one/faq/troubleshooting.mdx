@@ -111,7 +111,7 @@ Cloudflare dashboard SSO does not currently support team domain changes. Contact
 
 ## WARP on Linux shows `DNS connectivity check failed`.
 
-This error means that the `systemd-resolved` service on Linux is not allowing WARP to resolve DNS requests.
+This error means that the `systemd-resolved` service on Linux is not allowing WARP to resolve DNS requests. You can identify this issue in the [`daemon.log`](/cloudflare-one/connections/connect-devices/warp/troubleshooting/warp-logs/#warp-diag-logs:~:text=the%20WARP%20client.-,daemon.log,-Detailed%20log%20of) file of the `warp diag` logs, where the error message appears as `ERROR main_loop: warp::warp::connectivity_check: DNS connectivity check failed to resolve host="warp-svc."`.
 
 To solve the issue:
 
@@ -284,7 +284,7 @@ If admin generates an override code with a timeout of three hours at **9:30 AM**
 
 However, if the user attempts to enter the override code at **10:00 AM**, the override code will only be valid until **12:00 PM** (a two hour duration). The override code was generated at **9:30 AM** and one hour of its total three hour validity was counted as used in the 9:00 AM to 10:00 AM hour.
 
-### Scenariot three: Admin generates an override code at 12:30 PM with a timeout of 24 hours.
+### Scenario three: Admin generates an override code at 12:30 PM with a timeout of 24 hours.
 
 If admin generates an override code with a timeout of 24 hours at **12:30 PM** and the user inputs the override code in their device at **12:59 PM** the same day, the user will be able to toggle WARP on and off until **12:59 PM** the next day (a 24 hour duration.)
 
@@ -297,3 +297,25 @@ If the user attempts to enter the override code at **11:59 AM** the next day, th
 If you are using an [Admin override](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-settings/#admin-override) code with [Auto connect](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-settings/#auto-connect) also enabled, WARP will turn on automatically according to the Timeout set for **Auto connect**. Using an override code to override the WARP lock switch will not disable Auto connect. As best practice, review your Auto connect settings before sending the override code to the user.
 
 To prevent WARP from auto connecting while using an admin override code, disable Auto connect or set a longer **Timeout** for **Auto connect**. Note the changes you make to Auto connect while the end user is using the admin override code if you need to revert these changes later.
+
+## I am getting the error `Failed to fetch user/group information from the identity provider`.
+
+This error is returned when proper API permissions are not set up in the identity provider. When Cloudflare attempts to fetch user/group information from the identity provider and proper API permissions have not been configured, the `Failed to fetch user/group information from the identity provider` error will appear. Review the [SSO integration](/cloudflare-one/identity/idp-integration/) guide for your identity provider to ensure your application has the appropriate API permissions.
+
+For example, [Microsoft Entra](/cloudflare-one/identity/idp-integration/entra-id/#2-configure-api-permissions-in-entra-id) and [Okta](</cloudflare-one/identity/idp-integration/okta/#:~:text=(Optional)%20Create%20an%20Okta%20API%20token%20and%20enter%20it%20in%20Zero%20Trust%20(the%20token%20can%20be%20read%2Donly).%20This%20will%20prevent%20your%20Okta%20groups%20from%20failing%20if%20you%20have%20more%20than%20100%20groups>) have required permissions stated in their integration guides.
+
+You can also examine logs in your identity provider to identify any denied requests related to API access.
+
+## WSL2 is losing connectivity when using WARP.
+
+If your WSL2 environment is losing connectivity while using WARP, check your [split tunnel configuration](/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/split-tunnels/).
+
+The issue may arise because the IP range that the WSL environment uses to communicate with the host device is included in the split tunnel configuration. Excluding the WSL environment’s IP range should restore connectivity.
+
+You must ensure the host device is included in the WARP tunnel while excluding the WSL environment to prevent connectivity issues between WSL and the host device.
+
+### To debug this issue:
+
+1. Review the WSL2 environment's IP address and compare it with the laptop’s IP.
+2. Check if the WSL network is [included in the split tunnel configuration](/cloudflare-one/connections/connect-devices/warp/configure-warp/route-traffic/split-tunnels/#change-split-tunnels-mode).
+3. If the WSL network is included, exclude it from the split tunnel to prevent connectivity issues.
