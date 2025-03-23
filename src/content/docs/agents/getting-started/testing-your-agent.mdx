@@ -2,7 +2,7 @@
 title: Testing your Agents
 pcx_content_type: get-started
 sidebar:
-  order: 10
+  order: 9
 
 ---
 
@@ -16,14 +16,14 @@ Because Agents run on Cloudflare Workers and Durable Objects, they can be tested
 
 :::note
 
-The `agents-sdk-starter` template and new Cloudflare Workers projects already include the relevant `vitest` and `@cloudflare/vitest-pool-workers` packages, as well as a valid `vitest.config.js` file.
+The `agents-starter` template and new Cloudflare Workers projects already include the relevant `vitest` and `@cloudflare/vitest-pool-workers` packages, as well as a valid `vitest.config.js` file.
 
 :::
 
 Before you write your first test, install the necessary packages:
 
 ```sh
-npm install vitest@2.1.8 --save-dev --save-exact
+npm install vitest@~3.0.0 --save-dev --save-exact
 npm install @cloudflare/vitest-pool-workers --save-dev
 ```
 
