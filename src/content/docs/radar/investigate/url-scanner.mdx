@@ -6,7 +6,7 @@ sidebar:
 
 ---
 
-To better understand Internet usage around the world, use Cloudflare's URL Scanner. With Cloudflare's URL Scanner, you have the ability to investigate the details of a domain, IP, URL, or ASN. Cloudflare's URL Scanner is available in the Security Center of the Cloudflare dashboard, [Cloudflare Radar](https://radar.cloudflare.com/scan) and the Cloudflare [API](/api/resources/url_scanner/subresources/scans/).
+To better understand Internet usage around the world, use Cloudflare's URL Scanner. With Cloudflare's URL Scanner, you have the ability to investigate the details of a domain, IP, URL, or ASN. Cloudflare's URL Scanner is available in the Security Center of the Cloudflare dashboard, [Cloudflare Radar](https://radar.cloudflare.com/scan), and the Cloudflare [API](/api/resources/url_scanner/).
 
 ## Use the API
 
@@ -40,6 +40,8 @@ A successful response will have a status code of `200` and be similar to the fol
   "message": "Submission successful"
 }
 ```
+
+You can submit up to 100 URLs at the same time via the [API](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/bulk_create/).
 
 The `uuid` property in the response above identifies the scan and will be required when fetching the scan report.
 
