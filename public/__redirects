@@ -399,6 +399,7 @@
 /durable-objects/api/hibernatable-websockets-api/ /durable-objects/best-practices/websockets/ 301
 /durable-objects/api/alarms-in-durable-objects/ /durable-objects/api/alarms/ 301
 /durable-objects/api/websockets/ /durable-objects/best-practices/websockets/ 301
+/durable-objects/api/sql-storage/ /durable-objects/api/storage-api/ 301
 /durable-objects/platform/data-location/ /durable-objects/reference/data-location/ 301
 /durable-objects/platform/environments/ /durable-objects/reference/environments/ 301
 /durable-objects/platform/troubleshooting/ /durable-objects/observability/troubleshooting/ 301
@@ -417,7 +418,9 @@
 /durable-objects/platform/changelog/ /durable-objects/release-notes/ 301
 /durable-objects/changelog/ /durable-objects/release-notes/ 301
 /durable-objects/glossary/ /durable-objects/reference/glossary/ 301
-/durable-objects/get-started/walkthrough/ /durable-objects/get-started/tutorial/ 301
+/durable-objects/get-started/walkthrough/ /durable-objects/get-started/ 301
+/durable-objects/get-started/tutorial/ /durable-objects/get-started/ 301
+/durable-objects/get-started/tutorial-with-sql-api/ /durable-objects/get-started/ 301
 /durable-objects/get-started/video-series/intro/ /durable-objects/video-tutorials/ 301
 /durable-objects/get-started/video-series/app-frontend/ /durable-objects/video-tutorials/ 301
 /durable-objects/get-started/video-series/deploy-app/ /durable-objects/video-tutorials/ 301
@@ -791,6 +794,9 @@
 # magic-network-monitoring
 /magic-network-monitoring/routers/ /magic-network-monitoring/routers/supported-routers/ 301
 /magic-network-monitoring/tutorials/ /magic-network-monitoring/tutorials/graphql-analytics/ 301
+/magic-network-monitoring/rules/recommended-rule-configuration/ /magic-network-monitoring/rules/static-threshold/ 301
+/magic-network-monitoring/rules/sflow-ddos-alerts/ /rules/configure-rule-notifications/ 301
+/magic-network-monitoring/notifications/ /rules/rule-notifications/ 301
 
 # magic-transit
 /magic-transit/magic-firewall/ /magic-firewall/ 301
@@ -1417,6 +1423,7 @@
 /workers/tutorials/build-a-serverless-function/ /workers/tutorials/build-a-qr-code-generator/ 301
 /workers/tutorials/build-a-todo-list/ /workers/tutorials/build-a-jamstack-app/ 301
 /workers/tutorials/deploy-a-react-app/ /pages/framework-guides/deploy-a-react-site/ 301
+/workers/tutorials/deploy-button/ /workers/platform/deploy-buttons/ 301
 /workers/tutorials/hosting-static-wordpress-sites/ /pages/how-to/deploy-a-wordpress-site/ 301
 /workers/tutorials/configure-your-cdn/ /workers/tutorials/upload-assets-with-r2/ 301
 /workers/tutorials/create-a-chatgpt-powered-search-plugin/ /workers/tutorials/ 301
@@ -1520,6 +1527,8 @@
 /workers/tutorials/create-sitemap-from-sanity-cms/ /developer-spotlight/tutorials/create-sitemap-from-sanity-cms/ 301
 /workers/tutorials/custom-access-control-for-files-in-r2-using-d1-and-workers/ /developer-spotlight/tutorials/custom-access-control-for-files/ 301
 /workers/tutorials/generate-dynamic-og-images-using-workers/ /workers/tutorials/ 302
+/workers/static-assets/compatibility-matrix/ /workers/static-assets/migrate-from-pages/ 301
+/workers/frameworks/framework-guides/remix/ /workers/frameworks/framework-guides/react-router/ 301
 
 # workers ai
 /workers-ai/models/llm/ /workers-ai/models/#text-generation 301
@@ -1609,7 +1618,7 @@
 # hyperdrive
 
 /hyperdrive/learning/how-hyperdrive-works/ /hyperdrive/configuration/how-hyperdrive-works/ 301
-/hyperdrive/learning/connect-to-postgres/ /hyperdrive/configuration/connect-to-postgres/ 301
+/hyperdrive/learning/connect-to-postgres/ /hyperdrive/examples/connect-to-postgres/ 301
 /hyperdrive/learning/query-caching/ /hyperdrive/configuration/query-caching/ 301
 /hyperdrive/learning/troubleshooting/ /hyperdrive/reference/troubleshooting/ 301
 /hyperdrive/changelog/ /hyperdrive/platform/release-notes/ 301
@@ -1617,6 +1626,24 @@
 /hyperdrive/learning/ /hyperdrive/configuration/ 301
 /hyperdrive/reference/metrics/ /hyperdrive/observability/metrics/ 301
 /hyperdrive/reference/troubleshooting/ /hyperdrive/observability/troubleshooting/ 301
+/hyperdrive/examples/aws-rds-aurora/ /hyperdrive/examples/connect-to-postgres/aws-rds-aurora/ 301
+/hyperdrive/examples/azure/ /hyperdrive/examples/connect-to-postgres/azure/ 301
+/hyperdrive/examples/cockroachdb/ /hyperdrive/examples/connect-to-postgres/cockroachdb/ 301
+/hyperdrive/examples/digital-ocean/ /hyperdrive/examples/connect-to-postgres/digital-ocean/ 301
+/hyperdrive/examples/google-cloud-sql/ /hyperdrive/examples/connect-to-postgres/google-cloud-sql/ 301
+/hyperdrive/examples/materialize/ /hyperdrive/examples/connect-to-postgres/materialize/ 301
+/hyperdrive/examples/neon/ /hyperdrive/examples/connect-to-postgres/neon/ 301
+/hyperdrive/examples/nile/ /hyperdrive/examples/connect-to-postgres/nile/ 301
+/hyperdrive/examples/pgedge/ /hyperdrive/examples/connect-to-postgres/pgedge/ 301
+/hyperdrive/examples/supabase/ /hyperdrive/examples/connect-to-postgres/supabase/ 301
+/hyperdrive/examples/timescale/ /hyperdrive/examples/connect-to-postgres/timescale/ 301
+/hyperdrive/examples/xata/ /hyperdrive/examples/connect-to-postgres/xata/ 301
+/hyperdrive/examples/fly/ /hyperdrive/examples/connect-to-postgres/fly/ 301
+
+
+/hyperdrive/reference/supported-databases/ /hyperdrive/reference/supported-databases-and-features/ 301
+/hyperdrive/configuration/connect-to-postgres/ /hyperdrive/examples/connect-to-postgres/ 301
+
 
 # zaraz
 
