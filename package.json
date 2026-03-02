@@ -105,7 +105,7 @@
 		"remark": "15.0.1",
 		"remark-gfm": "4.0.1",
 		"remark-stringify": "11.0.0",
-		"sharp": "0.34.1",
+		"sharp": "0.34.5",
 		"solarflare-theme": "0.0.6",
 		"starlight-image-zoom": "0.11.1",
 		"starlight-links-validator": "0.19.2",
