@@ -26,7 +26,7 @@
 	},
 	"devDependencies": {
 		"@actions/core": "3.0.0",
-		"@actions/github": "6.0.0",
+		"@actions/github": "9.0.0",
 		"@apidevtools/swagger-parser": "12.1.0",
 		"@astrojs/check": "0.9.6",
 		"@astrojs/react": "5.0.0",
@@ -75,7 +75,7 @@
 		"he": "1.2.0",
 		"jsonc-parser": "3.3.1",
 		"lz-string": "1.5.0",
-		"marked": "17.0.4",
+		"marked": "17.0.5",
 		"mdast-util-from-markdown": "2.0.3",
 		"mdast-util-mdx": "3.0.0",
 		"mdast-util-mdx-expression": "2.0.1",
