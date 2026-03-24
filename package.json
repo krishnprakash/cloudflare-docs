@@ -26,7 +26,7 @@
 	},
 	"devDependencies": {
 		"@actions/core": "3.0.0",
-		"@actions/github": "6.0.0",
+		"@actions/github": "9.0.0",
 		"@apidevtools/swagger-parser": "12.1.0",
 		"@astrojs/check": "0.9.6",
 		"@astrojs/react": "5.0.0",
@@ -34,7 +34,7 @@
 		"@astrojs/sitemap": "3.7.0",
 		"@astrojs/starlight": "0.38.1",
 		"@astrojs/starlight-docsearch": "0.6.1",
-		"@astrojs/starlight-tailwind": "4.0.2",
+		"@astrojs/starlight-tailwind": "5.0.0",
 		"@astrojs/tailwind": "5.1.5",
 		"@cloudflare/vitest-pool-workers": "0.12.20",
 		"@cloudflare/workers-types": "4.20260305.1",
@@ -75,7 +75,7 @@
 		"he": "1.2.0",
 		"jsonc-parser": "3.3.1",
 		"lz-string": "1.5.0",
-		"marked": "17.0.4",
+		"marked": "17.0.5",
 		"mdast-util-from-markdown": "2.0.3",
 		"mdast-util-mdx": "3.0.0",
 		"mdast-util-mdx-expression": "2.0.1",
@@ -86,7 +86,7 @@
 		"parse-duration": "2.1.5",
 		"prettier": "3.8.1",
 		"prettier-plugin-astro": "0.14.1",
-		"prettier-plugin-tailwindcss": "0.6.9",
+		"prettier-plugin-tailwindcss": "0.7.2",
 		"pretty-bytes": "7.1.0",
 		"react": "19.2.4",
 		"react-dom": "19.2.4",
@@ -123,7 +123,7 @@
 		"unist-util-visit": "5.1.0",
 		"vite-tsconfig-paths": "6.1.1",
 		"vitest": "3.1.2",
-		"wrangler": "4.74.0"
+		"wrangler": "4.76.0"
 	},
 	"engines": {
 		"node": ">=22"
