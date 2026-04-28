@@ -42,7 +42,7 @@
 		"@expressive-code/plugin-collapsible-sections": "0.41.7",
 		"@floating-ui/react": "0.27.19",
 		"@iarna/toml": "2.2.5",
-		"@marsidev/react-turnstile": "1.5.0",
+		"@marsidev/react-turnstile": "1.5.1",
 		"@octokit/webhooks-types": "7.6.1",
 		"@stoplight/json-schema-tree": "4.0.0",
 		"@types/hast": "3.0.4",
@@ -108,7 +108,7 @@
 		"sharp": "0.34.5",
 		"solarflare-theme": "0.0.6",
 		"starlight-image-zoom": "0.14.1",
-		"starlight-links-validator": "0.23.0",
+		"starlight-links-validator": "0.24.0",
 		"starlight-package-managers": "0.12.0",
 		"starlight-showcases": "0.3.2",
 		"strip-markdown": "6.0.0",
@@ -123,7 +123,7 @@
 		"unist-util-visit": "5.1.0",
 		"vite-tsconfig-paths": "6.1.1",
 		"vitest": "4.1.5",
-		"wrangler": "4.82.2"
+		"wrangler": "4.85.0"
 	},
 	"engines": {
 		"node": ">=22"
