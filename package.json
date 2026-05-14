@@ -54,7 +54,7 @@
 		"algoliasearch": "5.52.0",
 		"@typescript-eslint/parser": "8.59.1",
 		"algoliasearch": "5.52.1",
-		"astro": "6.1.6",
+		"astro": "6.1.10",
 		"astro-breadcrumbs": "3.4.0",
 		"astro-icon": "1.1.5",
 		"astro-live-code": "0.0.6",
