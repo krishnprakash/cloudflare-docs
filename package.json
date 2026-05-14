@@ -50,6 +50,8 @@
 		"@types/node": "25.6.0",
 		"@types/react": "19.2.14",
 		"@types/react-dom": "19.2.3",
+		"@typescript-eslint/parser": "8.59.3",
+		"algoliasearch": "5.52.0",
 		"@typescript-eslint/parser": "8.59.1",
 		"algoliasearch": "5.52.1",
 		"astro": "6.1.6",
