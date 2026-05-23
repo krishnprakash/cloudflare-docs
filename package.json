@@ -37,7 +37,7 @@
 		"@astrojs/starlight-tailwind": "5.0.0",
 		"@astrojs/tailwind": "5.1.5",
 		"@cloudflare/vitest-pool-workers": "0.15.2",
-		"@cloudflare/workers-types": "4.20260423.1",
+		"@cloudflare/workers-types": "4.20260520.1",
 		"@codingheads/sticky-header": "1.0.2",
 		"@expressive-code/plugin-collapsible-sections": "0.42.0",
 		"@floating-ui/react": "0.27.19",
@@ -62,7 +62,7 @@
 		"codeowners-utils": "1.0.2",
 		"date-fns": "4.2.1",
 		"dedent": "1.7.2",
-		"dompurify": "3.4.2",
+		"dompurify": "3.4.5",
 		"dot-prop": "10.1.0",
 		"eslint": "10.2.1",
 		"eslint-plugin-astro": "1.7.0",
@@ -127,6 +127,8 @@
 		"unist-util-visit": "5.1.0",
 		"vite-tsconfig-paths": "6.1.1",
 		"vitest": "4.1.5",
+		"wrangler": "4.93.0"
+		"vitest": "4.1.6",
 		"wrangler": "4.92.0"
 	},
 	"engines": {
