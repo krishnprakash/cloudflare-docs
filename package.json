@@ -60,9 +60,9 @@
 		"astro-live-code": "0.0.6",
 		"cidr-tools": "12.0.0",
 		"codeowners-utils": "1.0.2",
-		"date-fns": "4.1.0",
+		"date-fns": "4.2.1",
 		"dedent": "1.7.2",
-		"dompurify": "3.4.2",
+		"dompurify": "3.4.5",
 		"dot-prop": "10.1.0",
 		"eslint": "10.2.1",
 		"eslint-plugin-astro": "1.7.0",
@@ -127,6 +127,8 @@
 		"unist-util-visit": "5.1.0",
 		"vite-tsconfig-paths": "6.1.1",
 		"vitest": "4.1.5",
+		"wrangler": "4.93.0"
+		"vitest": "4.1.6",
 		"wrangler": "4.92.0"
 	},
 	"engines": {
